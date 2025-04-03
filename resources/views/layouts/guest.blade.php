@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-
+        
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -22,7 +22,10 @@
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full sm:max-w-md mt-6 px-6 py-4 text-white shadow-lg overflow-hidden sm:rounded-lg" 
+                style="background: linear-gradient(135deg, #d62828 50%, #4caf50 50%);
+                        border-radius: 12px;
+                        box-shadow: 4px 4px 10px rgba(0,0,0,0.2);">
                 {{ $slot }}
             </div>
         </div>
