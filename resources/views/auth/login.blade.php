@@ -39,7 +39,7 @@
                 </a>
             @endif
 
-            <x-primary-button class="ms-3 bg-[#d62828] hover:bg-[#b71d1d]">
+            <x-primary-button class="ms-3 bg-[#d62828] hover:bg-[#b71d1d] text-white">
                 {{ __('Iniciar Sesion') }}
             </x-primary-button>
         </div>
