@@ -11,8 +11,8 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
