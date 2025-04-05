@@ -3,7 +3,7 @@
 <php artisan serve> => inicia el servidor de php
 <npm run dev> => se debe iniciar en conjunto con el comando de php
 php artisan make:model <nombre modelo> => comando para crear un modelo
-php artisan make:controller  <nombre controlador> --resources => comando para crear un controlador con todas las funciones necesarias
+php artisan make:controller  <nombre controlador> --resource => comando para crear un controlador con todas las funciones necesarias
 <php artisan migrate>=> crear migraciones 
 <php artisan make:migration> create_name_table => para crear tabla de migraciones
 
