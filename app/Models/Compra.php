@@ -8,7 +8,7 @@ class Compra extends Model
 {
     protected $table = 'purchases';
     protected $primaryKey = 'id';
-    protected $fillable = ['supplier_id', 'raw_material_id', 'quantity', 'total_cost'];
+    protected $fillable = ['supplier_id', 'raw_material_id', 'quantity', 'purchase_price'];
     public $timestamps = true;
 
     public function supplier()
