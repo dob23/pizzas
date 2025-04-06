@@ -17,7 +17,7 @@
           {{ __('Proveedores') }}
         </h2>
       </x-slot>
-    <div class="py-12">
+      <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
@@ -36,14 +36,14 @@
                 </thead>
                 <tbody>
                   @foreach ($proveedores as $proveedor)
-                  <tr>
-                    <th scope="row">{{ $proveedor->id }}</th>
-                    <td>{{ $proveedor->name }}</td>
-                    <td>{{ $proveedor->contact_info }}</td>
-                    <td>
-                     <span>Acciones</span>
-                  </td>
-                  </tr>
+                      <tr>
+                          <td>{{ $proveedor->id }}</td>
+                          <td>{{ $proveedor->name }}</td>
+                          <td>{{ $proveedor->contact_info }}</td>
+                          <td>
+                              <a href="{{ route('proveedores.edit', ['id' => $proveedor->id]) }}" class="btn btn-warning">Editar</a>
+                          </td>
+                      </tr>
                   @endforeach
                 </tbody>
               </table>
