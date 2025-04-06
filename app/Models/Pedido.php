@@ -5,29 +5,32 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
 {
-    protected $table = 'codes'; 
+    protected $table = 'codes'; // Nombre real de la tabla en DB
 
-    
-    public function user()
+    protected $fillable = [
+        'client_id',
+        'branch_id',
+        'total_price',
+        'status',
+        'delivery_type',
+        'delivery_person_id'
+    ];
+
+    // Relación con el usuario (cliente)
+    public function cliente()
     {
-        return $this->belongsTo(User::class, 'client_id'); 
+        return $this->belongsTo(User::class, 'client_id');
     }
 
-    
-    public function sucursal()
-    {
-        return $this->belongsTo(Sucursal::class, 'branch_id');
-    }
-
-   
+    // Relación con ingredientes extras (tabla pivote)
     public function ingredientesExtras()
     {
         return $this->belongsToMany(Ingrediente::class, 'code1_extra_trigedient_id', 'order_id', 'extra_trigedient_id')
-                    ->withPivot('quantity');
+                   ->withPivot('quantity');
     }
 
-    
-    public function cocinero()
+    // Relación con el cocinero/mensajero
+    public function repartidor()
     {
         return $this->belongsTo(Cocinero::class, 'delivery_person_id');
     }
