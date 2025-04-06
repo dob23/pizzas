@@ -53,7 +53,8 @@ class MateriaPrimaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $materiaPrimas = MateriaPrima::findOrFail($id);
+        return view('materiaprimas.edit', ['materiaPrima' => $materiaPrimas]);
     }
 
     /**
@@ -61,7 +62,12 @@ class MateriaPrimaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $materiaPrimas = MateriaPrima::findOrFail($id);
+        $materiaPrimas->name = $request->input('name');
+        $materiaPrimas->unit = $request->input('unit');
+        $materiaPrimas->current_stock = $request->input('current_stock');
+        $materiaPrimas->save();
+        return redirect()->route('materiaPrima.index');
     }
 
     /**
@@ -69,6 +75,8 @@ class MateriaPrimaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $materiaPrimas = MateriaPrima::findOrFail($id);
+        $materiaPrimas->delete();
+        return redirect()->route('materiaPrima.index');
     }
 }

@@ -26,7 +26,7 @@
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
-              <a href="{{ route('materiaPrima.index') }}" 
+              <a href="{{ route('materiaPrima.new') }}" 
                 class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded ml-1 ">
                 <i class="fa-solid fa-plus"></i> Nueva materia prima
               </a>
@@ -48,7 +48,12 @@
                         <td>{{ $material->unit }}</td>
                         <td>{{ $material->current_stock }}</td>
                         <td>
-                           <span>Acciones</span>
+                            <a href="{{ route('materiaPrima.edit', ['id' => $material->id]) }}" class="btn btn-warning">Editar</a>
+                            <form action="{{ route('materiaPrima.destroy', ['id' => $material->id]) }}" method="POST" style="display:inline;" class="delete-form">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
