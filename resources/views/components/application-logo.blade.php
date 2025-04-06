@@ -8,7 +8,7 @@
         'materiaPrima.index',
         'materiaPrima.new',
         'materiaPrima.edit',
-        
+        'compras.index',
     ];
     $isSmallLogo = request()->routeIs(...$smallLogoRoutes);
 @endphp

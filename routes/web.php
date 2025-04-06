@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\MateriaPrimaController;
+use App\Http\Controllers\CompraController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,8 +38,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/materiaprimas/{id}/edit', [MateriaPrimaController::class, 'edit'])->name('materiaPrima.edit');
     Route::put('/materiaprimas/{id}', [MateriaPrimaController::class, 'update'])->name('materiaPrima.update');
     Route::delete('/materiaprimas/{id}', [MateriaPrimaController::class, 'destroy'])->name('materiaPrima.destroy');
-    
 });
     
-
+//RUTAS DE COMPRAS 
+Route::middleware('auth')->group(function(){
+    Route::get('/compras', [CompraController::class, 'index'])->name('compras.index');
+});
 require __DIR__.'/auth.php';
