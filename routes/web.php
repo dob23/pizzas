@@ -43,5 +43,10 @@ Route::middleware('auth')->group(function(){
 //RUTAS DE COMPRAS 
 Route::middleware('auth')->group(function(){
     Route::get('/compras', [CompraController::class, 'index'])->name('compras.index');
+    Route::get('/compras/new', [CompraController::class, 'create'])->name('compras.new');
+    Route::post('/compras', [CompraController::class, 'store'])->name('compras.store');
+    Route::get('/compras/{id}/edit', [CompraController::class, 'edit'])->name('compras.edit');
+    Route::put('/compras/{id}', [CompraController::class, 'update'])->name('compras.update');
+    Route::delete('/compras/{id}', [CompraController::class, 'destroy'])->name('compras.destroy');
 });
 require __DIR__.'/auth.php';

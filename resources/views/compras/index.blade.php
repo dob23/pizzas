@@ -25,7 +25,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
-              <a href="{{ route('compras.index') }}" 
+              <a href="{{ route('compras.new') }}" 
                  class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded ml-1">
                 <i class="fa-solid fa-plus"></i> Nueva compra
               </a>
@@ -48,9 +48,14 @@
                         <td>{{ $compra->supplier_name }}</td>
                         <td>{{ $compra->material_name }}</td>
                         <td>{{ $compra->quantity }} {{ $compra->unit }}</td>
-                        <td>${{ $compra->total_cost }}</td>
+                        <td>${{ $compra->purchase_price }}</td>
                         <td>
-                            <span>Acciones</span>
+                            <a href="{{ route('compras.edit', ['id' => $compra->id]) }}" class="btn btn-warning">Editar</a>
+                            <form action="{{ route('compras.destroy', ['id' => $compra->id]) }}" method="POST" style="display:inline;" class="delete-form">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
