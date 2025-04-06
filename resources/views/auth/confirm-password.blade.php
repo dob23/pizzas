@@ -10,7 +10,7 @@
         <div>
             <x-input-label for="password" :value="__('Contraseña')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
+            <x-text-input id="password" class="block mt-1 w-full text-black bg-white"
                             type="password"
                             name="password"
                             required autocomplete="Contraseña actual" />
