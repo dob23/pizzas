@@ -14,6 +14,10 @@
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
                     {{ __('Dashboard') }}
                 </x-nav-link>
+                <!-- Navigation Links -->
+                <x-nav-link :href="route('proveedores.index')" :active="request()->routeIs('proveedores.index')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
+                    {{ __('Proveedores') }}
+                </x-nav-link>
                 
             </div>
 
