@@ -22,6 +22,8 @@ Route::middleware('auth')->group(function () {
 //RUTAS DE PROVEEDORES
 Route::middleware('auth')->group(function(){
     Route::get('/proveedores', [ProveedorController::class, 'index'])->name('proveedores.index');
+    Route::get('/proveedores/new', [ProveedorController::class, 'create'])->name('proveedores.new');
+    Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
 });
 
 require __DIR__.'/auth.php';

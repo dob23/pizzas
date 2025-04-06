@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Proveedor;
-
+use Illuminate\Support\Facades\DB;
 class ProveedorController extends Controller
 {
     /**
@@ -17,11 +17,14 @@ class ProveedorController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @return \\Illuminate\\Http\\Response
      */
     public function create()
     {
-        //
+        $proveedores = DB::table('suppliers')
+        ->select('id', 'name', 'contact_info') 
+        ->get();
+        return view('proveedores.new', ['proveedores' => $proveedores]);
     }
 
     /**
@@ -29,7 +32,11 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proveedores = new Proveedor();
+        $proveedores->name = $request->input('name');
+        $proveedores->contact_info = $request->input('contact_info');
+        $proveedores->save();
+        return redirect()->route('proveedores.index');
     }
 
     /**
