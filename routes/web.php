@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProveedorController;
-
+use App\Http\Controllers\MateriaPrimaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,5 +28,13 @@ Route::middleware('auth')->group(function(){
     Route::put('/proveedores/{id}', [ProveedorController::class, 'update'])->name('proveedores.update');
     Route::delete('/proveedores/{id}', [ProveedorController::class, 'destroy'])->name('proveedores.destroy');
 });
+
+//RUTAS DE MATERIA PRIMA
+Route::middleware('auth')->group(function(){
+    Route::get('/materiaprimas', [MateriaPrimaController::class, 'index'])->name('materiaPrima.index');
+    Route::get('/materiaprimas/new', [MateriaPrimaController::class, 'create'])->name('materiaPrima.new');
+    Route::post('/materiaprimas', [MateriaPrimaController::class, 'store'])->name('materiaPrima.store');
+});
+    
 
 require __DIR__.'/auth.php';
