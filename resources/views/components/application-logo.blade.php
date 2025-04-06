@@ -3,7 +3,8 @@
     request()->routeIs('dashboard') || 
     request()->routeIs('profile.edit') || 
     request()->routeIs('proveedores.index') ||
-    request()->routeIs('proveedores.new');
+    request()->routeIs('proveedores.new') ||
+    request()->routeIs('proveedores.edit');
 @endphp
 
 <img src="{{ asset('images/logo2.png') }}" alt="pizza_logo" 

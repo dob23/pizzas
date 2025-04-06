@@ -52,7 +52,8 @@ class ProveedorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $proveedores = Proveedor::findOrFail($id);
+        return view('proveedores.edit', ['proveedores' => $proveedores]);
     }
 
     /**
@@ -60,7 +61,11 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $proveedores = Proveedor::findOrFail($id);
+        $proveedores->name = $request->input('name');
+        $proveedores->contact_info = $request->input('contact_info');
+        $proveedores->save();
+        return redirect()->route('proveedores.index');
     }
 
     /**
