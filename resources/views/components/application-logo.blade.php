@@ -6,6 +6,9 @@
         'proveedores.new',
         'proveedores.edit',
         'materiaPrima.index',
+        'materiaPrima.new',
+        'materiaPrima.edit',
+        
     ];
     $isSmallLogo = request()->routeIs(...$smallLogoRoutes);
 @endphp

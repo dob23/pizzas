@@ -6,7 +6,7 @@ $(document).ready(function () {
       $.confirm({
         title: 'Confirmación',
         icon: 'fa fa-exclamation-triangle',
-        content: '¿Estás seguro de que deseas eliminar esta categoría?',
+        content: '¿Estás seguro de que deseas eliminar?',
         theme: 'Modern',
         type: 'red',
         buttons: {

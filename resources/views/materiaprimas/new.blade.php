@@ -35,7 +35,7 @@
 
                           <div class="mb-3">
                               <label for="name" class="form-label">Nombre de Materia Prima</label>
-                              <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del Proveedor" required>
+                              <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del material" required>
                           </div>
 
                           <div class="mb-3">

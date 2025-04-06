@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/materiaprimas', [MateriaPrimaController::class, 'index'])->name('materiaPrima.index');
     Route::get('/materiaprimas/new', [MateriaPrimaController::class, 'create'])->name('materiaPrima.new');
     Route::post('/materiaprimas', [MateriaPrimaController::class, 'store'])->name('materiaPrima.store');
+    Route::get('/materiaprimas/{id}/edit', [MateriaPrimaController::class, 'edit'])->name('materiaPrima.edit');
+    Route::put('/materiaprimas/{id}', [MateriaPrimaController::class, 'update'])->name('materiaPrima.update');
+    Route::delete('/materiaprimas/{id}', [MateriaPrimaController::class, 'destroy'])->name('materiaPrima.destroy');
+    
 });
     
 
