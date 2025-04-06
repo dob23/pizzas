@@ -1,10 +1,13 @@
 @php
-    $isSmallLogo = 
-    request()->routeIs('dashboard') || 
-    request()->routeIs('profile.edit') || 
-    request()->routeIs('proveedores.index') ||
-    request()->routeIs('proveedores.new') ||
-    request()->routeIs('proveedores.edit');
+    $smallLogoRoutes = [
+        'dashboard',
+        'profile.edit',
+        'proveedores.index',
+        'proveedores.new',
+        'proveedores.edit',
+        'materiaPrima.index',
+    ];
+    $isSmallLogo = request()->routeIs(...$smallLogoRoutes);
 @endphp
 
 <img src="{{ asset('images/logo2.png') }}" alt="pizza_logo" 
