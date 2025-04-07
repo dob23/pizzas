@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\MateriaPrimaController;
 use App\Http\Controllers\CompraController;
-
+use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -48,5 +48,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/compras/{id}/edit', [CompraController::class, 'edit'])->name('compras.edit');
     Route::put('/compras/{id}', [CompraController::class, 'update'])->name('compras.update');
     Route::delete('/compras/{id}', [CompraController::class, 'destroy'])->name('compras.destroy');
+});
+
+
+//RUTAS DE USUARIOS
+Route::middleware('auth')->group(function(){
+    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
 });
 require __DIR__.'/auth.php';
