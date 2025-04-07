@@ -24,7 +24,12 @@ class User extends Authenticatable
 
     
     use HasFactory, Notifiable;
-
+    
+    public const ROLE_ADMIN = 'administrador';
+    public const ROLE_CAJERO = 'cajero';
+    public const ROLE_COCINERO = 'cocinero';
+    public const ROLE_MENSAJERO = 'mensajero';
+    public const ROLE_CLIENTE = 'cliente';
     /**
      * The attributes that are mass assignable.
      *
@@ -34,6 +39,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
