@@ -53,6 +53,10 @@ Route::middleware('auth')->group(function(){
 
 //RUTAS DE USUARIOS
 Route::middleware('auth')->group(function(){
-    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
+    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');;
+    Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
+    Route::post('/usuarios', [UserController::class, 'store'])->name('usuarios.store');
+    Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('usuarios.update');
+    Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
 });
 require __DIR__.'/auth.php';

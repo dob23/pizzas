@@ -29,7 +29,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new User();
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->role = $request->role;
+        $usuario->password = bcrypt($request->password); // Siempre cifrar la contraseña
+        $usuario->save();
+    
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -43,17 +50,25 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $usuarios = User::findOrFail($id);
+        return view('usuarios.edit', ['usuario' => $usuarios]);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
+    {    
+        $usuarios = User::findOrFail($id);
+        $usuarios->name = $request->input('name');
+        $usuarios->email = $request->input('email');
+        $usuarios->role = $request->input('role');
+        $usuarios->save();
+
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -61,14 +76,16 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $usuario = User::findOrFail($id);
+        $usuario->delete();
+        return redirect()->route('usuarios.index');
     }
 
     public function actualizarRol(Request $request, $id)
     {
-        $usuario = User::findOrFail($id);
-        $usuario->role = $request->role;
-        $usuario->save();
+        $usuarios = User::findOrFail($id);
+        $usuarios->role = $request->role;
+        $usuarios->save();
 
         return response()->json(['success' => true]);
     }
