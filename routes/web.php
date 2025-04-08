@@ -22,6 +22,8 @@ Route::middleware('auth')->group(function () {
 //RUTAS DE EMPLEADOS
 Route::middleware('auth')->group(function(){
     Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados.index');
+    Route::get('/empleados/{id}/edit', [EmpleadoController::class, 'edit'])->name('empleados.edit');
+    Route::put('/empleados/{id}', [EmpleadoController::class, 'update'])->name('empleados.update');
    
 });
 //RUTAS DE PROVEEDORES
