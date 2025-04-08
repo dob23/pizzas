@@ -37,7 +37,7 @@ class PizzaController extends Controller
         $pizzas = new Pizza();
         $pizzas->name = $request->input('name');
         $pizzas->save();
-        
+
         return view('pizzas.index', ['pizzas' => $pizzas]);
 
     }
@@ -55,7 +55,9 @@ class PizzaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pizzas = Pizza::finrOrFail($id);
+        return view('pizzas.edit', ['pizzas' => $pizzas]);
+
     }
 
     /**
@@ -63,7 +65,11 @@ class PizzaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pizzas = Pizza::findOrFail($id);
+        $pizzas->name = $request->input('name');
+        $pizzas->save();
+
+        return view('pizzas.index', ['pizzas' => $pizzas]);
     }
 
     /**
