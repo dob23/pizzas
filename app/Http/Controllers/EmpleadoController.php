@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sucursal;
-class SucursalController extends Controller
+use App\Models\Empleado;
+class EmpleadoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $sucursales = Sucursal::all();
-        return view('sucursales.index', [
-            'sucursales' => $sucursales,
-        ]);
+      $empleados = Empleado::all();
+      return view('empleados.index', ['empleados' => $empleados]);   
     }
 
     /**

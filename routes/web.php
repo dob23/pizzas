@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\MateriaPrimaController;
 use App\Http\Controllers\CompraController;
-
+use App\Http\Controllers\EmpleadoController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,7 +19,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+//RUTAS DE EMPLEADOS
+Route::middleware('auth')->group(function(){
+    Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados.index');
+   
+});
 //RUTAS DE PROVEEDORES
 Route::middleware('auth')->group(function(){
     Route::get('/proveedores', [ProveedorController::class, 'index'])->name('proveedores.index');
