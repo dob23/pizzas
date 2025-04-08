@@ -11,18 +11,6 @@ class User extends Authenticatable
 {
 
     
-    public function pedidos()
-    {
-        return $this->hasMany(Pedido::class, 'client_id'); 
-    }
-
-    
-    public function cocinero()
-    {
-        return $this->hasOne(Cocinero::class, 'user_id');
-    }
-
-    
     use HasFactory, Notifiable;
 
     /**
