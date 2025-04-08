@@ -31,4 +31,9 @@ class OrderItem extends Model
     {
         return $this->hasMany(OrderExtraIngredient::class);
     }
+    public function ingredientes()
+{
+    return $this->belongsToMany(Ingrediente::class, 'order_item_ingrediente')
+                ->withTimestamps();
+}
 }
