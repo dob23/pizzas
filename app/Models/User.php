@@ -9,9 +9,27 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
 
+    
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class, 'client_id'); 
+    }
+
+    
+    public function cocinero()
+    {
+        return $this->hasOne(Cocinero::class, 'user_id');
+    }
+
+    
+    use HasFactory, Notifiable;
+    
+    public const ROLE_ADMIN = 'administrador';
+    public const ROLE_CAJERO = 'cajero';
+    public const ROLE_COCINERO = 'cocinero';
+    public const ROLE_MENSAJERO = 'mensajero';
+    public const ROLE_CLIENTE = 'cliente';
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +39,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
