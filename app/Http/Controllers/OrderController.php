@@ -40,9 +40,6 @@ class OrderController extends Controller
         // 3. Notificar a cocineros
         $this->notifyCooks($order);
 
-        // 4. Redirigir
-        return redirect()->route('orders.show', $order)
-            ->with('success', 'Pedido realizado con éxito');
     }
 
     protected function createOrder(array $data)

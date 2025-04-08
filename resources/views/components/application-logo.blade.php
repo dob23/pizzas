@@ -11,6 +11,7 @@
         'compras.index',
         'compras.new',
         'compras.edit',
+        'orders.index',
     ];
     $isSmallLogo = request()->routeIs(...$smallLogoRoutes);
 @endphp
