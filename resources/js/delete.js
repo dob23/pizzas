@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     $('.delete-form').on('submit', function (e) {
       e.preventDefault();

@@ -1,16 +1,14 @@
 <?php
+
+
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Ingrediente extends Model
 {
-    protected $fillable = ['name', 'price'];
+    use HasFactory;
 
-    // Relación con pedidos (a través de la tabla pivote)
-    public function pedidos()
-    {
-        return $this->belongsToMany(Pedido::class, 'code1_extra_trigedient_id', 'extra_trigedient_id', 'order_id')
-                   ->withPivot('quantity');
-    }
+    protected $fillable = ['name'];
 }
