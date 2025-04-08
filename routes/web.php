@@ -7,6 +7,7 @@ use App\Http\Controllers\MateriaPrimaController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PizzaController;
+use App\Http\Controllers\PizzaSizeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -70,6 +71,12 @@ Route::middleware('auth')->group(function(){
     Route::get('/pizzas/{id}/edit', [PizzaController::class, 'edit'])->name('pizzas.edit');
     Route::put('/pizzas/{id}', [PizzaController::class, 'update'])->name('pizzas.update');
     Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])->name('pizzas.destroy');
+
+});
+
+//RUTAS DE PIZZA SIZE
+Route::middleware('auth')->group(function(){
+    Route::get('/pizzasizes', [PizzaSizeController::class, 'index'])->name('pizzasizes.index');
 
 });
 require __DIR__.'/auth.php';
