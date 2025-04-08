@@ -57,7 +57,10 @@ class PizzaSizeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pizzaSize = PizzaSize::findOrFail($id);
+        $pizzas = Pizza::select('id', 'name')->get();
+    
+        return view('pizzasizes.edit', compact('pizzaSize', 'pizzas'));
     }
 
     /**
@@ -65,7 +68,14 @@ class PizzaSizeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        $pizzaSize = PizzaSize::findOrFail($id);
+        $pizzaSize->pizza_id = $request->pizza_id;
+        $pizzaSize->size = $request->size;
+        $pizzaSize->price = $request->price;
+        $pizzaSize->save();
+
+        return redirect()->route('pizzasizes.index');
     }
 
     /**
@@ -73,6 +83,9 @@ class PizzaSizeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pizzaSize = PizzaSize::findOrFail($id);
+        $pizzaSize->delete();
+
+        return redirect()->route('pizzasizes.index');
     }
 }

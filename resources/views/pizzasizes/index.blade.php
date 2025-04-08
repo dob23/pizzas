@@ -47,7 +47,12 @@
                       <td>{{ ucfirst($size->size) }}</td>
                       <td>${{ number_format($size->price, 2) }}</td>
                       <td>
-                        <span>Acciones</span>
+                        <a href="{{ route('pizzasizes.edit', ['id' => $size->id]) }}" class="btn btn-warning">Editar</a>
+                        <form action="{{ route('pizzasizes.destroy', ['id' => $size->id]) }}" method="POST" style="display:inline;" class="delete-form">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
                       </td>
                     </tr>
                   @endforeach
