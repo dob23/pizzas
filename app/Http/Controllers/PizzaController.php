@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pizza;
+use Illuminate\Support\Facades\DB;
+
 
 class PizzaController extends Controller
 {
@@ -21,7 +23,10 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        //
+        $pizzas = DB::table('pizzas')
+        ->select('id', 'name')
+        ->get();
+        return view('pizzas.new', ['pizzas' => $pizzas]);
     }
 
     /**
@@ -29,7 +34,12 @@ class PizzaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pizzas = new Pizza();
+        $pizzas->name = $request->input('name');
+        $pizzas->save();
+        
+        return view('pizzas.index', ['pizzas' => $pizzas]);
+
     }
 
     /**

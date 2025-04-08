@@ -6,6 +6,8 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\MateriaPrimaController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PizzaController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -58,5 +60,13 @@ Route::middleware('auth')->group(function(){
     Route::post('/usuarios', [UserController::class, 'store'])->name('usuarios.store');
     Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('usuarios.update');
     Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
+});
+
+//RUTAS DE PIZZA
+Route::middleware('auth')->group(function(){
+    Route::get('/pizzas', [PizzaController::class, 'index'])->name('pizzas.index');
+    Route::get('/pizzas/new', [PizzaController::class, 'create'])->name('pizzas.new');
+    Route::post('/pizzas', [PizzaController::class, 'store'])->name('pizzas.store');
+
 });
 require __DIR__.'/auth.php';

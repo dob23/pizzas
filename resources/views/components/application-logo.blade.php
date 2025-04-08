@@ -13,6 +13,7 @@
         'compras.edit',
         'usuarios.index',
         'usuarios.edit',
+        'pizzas.index',
     ];
     $isSmallLogo = request()->routeIs(...$smallLogoRoutes);
 @endphp
