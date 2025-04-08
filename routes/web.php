@@ -48,5 +48,26 @@ Route::middleware('auth')->group(function(){
     Route::get('/compras/{id}/edit', [CompraController::class, 'edit'])->name('compras.edit');
     Route::put('/compras/{id}', [CompraController::class, 'update'])->name('compras.update');
     Route::delete('/compras/{id}', [CompraController::class, 'destroy'])->name('compras.destroy');
+
 });
+
+// Rutas para clientes
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+});
+
+// Rutas para cocineros
+Route::prefix('cook')->middleware(['auth', 'role:cocinero'])->group(function () {
+    Route::get('/', [CookController::class, 'index'])->name('cook.index');
+    Route::put('/orders/{order}/status', [CookController::class, 'updateStatus'])->name('cook.update-status');
+});
+
+// Rutas para mensajeros
+Route::prefix('delivery')->middleware(['auth', 'role:mensajero'])->group(function () {
+    Route::get('/', [DeliveryController::class, 'index'])->name('delivery.index');
+    Route::put('/orders/{order}/status', [DeliveryController::class, 'updateStatus'])->name('delivery.update-status');
+});
+
 require __DIR__.'/auth.php';
