@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\MateriaPrimaController;
 use App\Http\Controllers\CompraController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('welcome');
