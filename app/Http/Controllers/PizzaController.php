@@ -73,10 +73,13 @@ class PizzaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param int $id
+     * @return \\Illuminate\\Http\\Response
      */
     public function destroy(string $id)
     {
-        //
+        $pizzas = Pizza::findOrFail($id);
+        $pizzas->delete();
+        return redirect()->route('pizzas.index');
     }
 }

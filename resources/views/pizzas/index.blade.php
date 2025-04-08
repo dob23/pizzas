@@ -47,7 +47,11 @@
                       <td>{{ $pizza->id }}</td>
                       <td>{{ $pizza->name }}</td>
                       <td>
-                        <span>Acciones</span>
+                        <a href="{{ route('pizzas.edit', ['id' => $pizza->id]) }}" class="btn btn-warning">Editar</a>
+                        <form action="{{ route('pizzas.destroy', ['id' => $pizza->id]) }}" method="POST" style="display:inline;" class="delete-form">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">Eliminar</button>
                       </td>
                     </tr>
                   @endforeach
