@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PizzaSize;
+use Illuminate\Support\Facades\DB;
+use App\Models\Pizza;
 
 class PizzaSizeController extends Controller
 {
@@ -20,17 +22,26 @@ class PizzaSizeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+        public function create()
+        {
+            $pizzas = Pizza::select('id', 'name')->get();
+
+            return view('pizzasizes.new', compact('pizzas'));
+        }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $pizzaSizes = new PizzaSize();
+        $pizzaSizes->size = $request->input('size');
+        $pizzaSizes->price = $request->input('price');
+        $pizzaSizes->pizza_id = $request->input('pizza_id');
+        $pizzaSizes->save();
+
+        return redirect()->route('pizzasizes.index');
+
     }
 
     /**

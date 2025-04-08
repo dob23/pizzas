@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function(){
 //RUTAS DE PIZZA SIZE
 Route::middleware('auth')->group(function(){
     Route::get('/pizzasizes', [PizzaSizeController::class, 'index'])->name('pizzasizes.index');
-
+    Route::get('/pizzasizes/new', [PizzaSizeController::class, 'create'])->name('pizzasizes.new');
+    Route::post('/pizzasizes', [PizzaSizeController::class, 'store'])->name('pizzasizes.store');
 });
 require __DIR__.'/auth.php';
