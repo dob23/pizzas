@@ -50,14 +50,10 @@
                     <td>${{ number_format($empleado->salary, 2) }}</td>
                     <td>{{ $empleado->hire_date }}</td>
                     <td>
-                    <a href="{{ route('materiaPrima.edit', ['id' => $material->id]) }}" class="btn btn-warning">Editar</a>
-                    <form action="{{ route('empleados.destroy', ['id' => $empleado->id]) }}" method="POST" style="display:inline;" class="delete-form">
-                     @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
-                
-                </td>
+                      <a href="{{ route('empleados.edit', $empleado->id) }}" class="btn btn-primary">
+                        <i class="fa-solid fa-pen-to-square"></i></a>
+      
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>
