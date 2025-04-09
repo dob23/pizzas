@@ -34,6 +34,14 @@
                 <x-nav-link :href="route('pizzasizes.index')" :active="request()->routeIs('pizzasizes.index')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
                     {{ __('Tamaño Pizza') }}
                 </x-nav-link>
+                <!-- USUARIOS -->
+                <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
+                    {{ __('Usuarios') }}
+                </x-nav-link>
+                <!-- EMPLEADOS -->
+                <x-nav-link :href="route('empleados.index')" :active="request()->routeIs('empleados.index')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
+                    {{ __('Empleados') }}
+                </x-nav-link>
             </div>
 
             <!-- Settings Dropdown -->
