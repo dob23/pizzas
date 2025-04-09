@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/empleados', [EmpleadoController::class, 'store'])->name('empleados.store');
     Route::get('/empleados/{id}/edit', [EmpleadoController::class, 'edit'])->name('empleados.edit');
     Route::put('/empleados/{id}', [EmpleadoController::class, 'update'])->name('empleados.update');
-
+    Route::delete('/empleados/{id}', [EmpleadoController::class, 'destroy'])->name('empleados.destroy');
 });
 //RUTAS DE PROVEEDORES
 Route::middleware('auth')->group(function(){
