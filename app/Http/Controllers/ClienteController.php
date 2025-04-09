@@ -52,7 +52,9 @@ class ClienteController extends Controller
      */
     public function edit(string $id)
     {
-        
+        $cliente = Cliente::with('user')->findOrFail($id);
+
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -60,7 +62,13 @@ class ClienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        $cliente->update([
+            'address' => $request->address,
+            'phone' => $request->phone,
+        ]);
+    
+        return redirect()->route('clientes.index');
     }
 
     /**
