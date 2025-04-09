@@ -26,9 +26,11 @@ Route::middleware('auth')->group(function () {
 //RUTAS DE EMPLEADOS
 Route::middleware('auth')->group(function(){
     Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados.index');
+    Route::get('/empleados/new', [EmpleadoController::class, 'create'])->name('empleados.new');
+    Route::post('/empleados', [EmpleadoController::class, 'store'])->name('empleados.store');
     Route::get('/empleados/{id}/edit', [EmpleadoController::class, 'edit'])->name('empleados.edit');
     Route::put('/empleados/{id}', [EmpleadoController::class, 'update'])->name('empleados.update');
-   
+
 });
 //RUTAS DE PROVEEDORES
 Route::middleware('auth')->group(function(){

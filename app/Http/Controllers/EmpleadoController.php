@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Empleado;
+use Illuminate\Support\Facades\DB;
 class EmpleadoController extends Controller
 {
     /**
@@ -20,7 +21,10 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+        $usuarios = DB::table('users')->select('id', 'name')->get();
+
+        return view('empleados.new', [ 'usuarios' => $usuarios
+    ]);
     }
 
     /**
@@ -28,7 +32,16 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empleado = new Empleado();
+        $empleado->user_id = $request->user_id;
+        $empleado->position = $request->position;
+        $empleado->identification_number = $request->identification_number;
+        $empleado->salary = $request->salary;
+        $empleado->hire_date = $request->hire_date;
+
+        $empleado->save();
+
+        return redirect()->route('empleados.index');
     }
 
     /**
