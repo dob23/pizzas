@@ -57,7 +57,10 @@ class EmpleadoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $empleado = Empleado::findOrFail($id);
+        $usuarios = DB::table('users')->select('id', 'name', 'email')->get();
+
+        return view('empleados.edit', compact('empleado', 'usuarios'));
     }
 
     /**
@@ -65,7 +68,17 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $empleado = Empleado::findOrFail($id);
+
+        $empleado->user_id = $request->user_id;
+        $empleado->position = $request->position;
+        $empleado->identification_number = $request->identification_number;
+        $empleado->salary = $request->salary;
+        $empleado->hire_date = $request->hire_date;
+
+        $empleado->save();
+
+        return redirect()->route('empleados.index');
     }
 
     /**
@@ -73,6 +86,7 @@ class EmpleadoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Empleado::findOrFail($id)->delete();
+        return redirect()->route('empleados.index');
     }
 }
