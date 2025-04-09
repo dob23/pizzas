@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\PizzaSizeController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ClienteController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -91,5 +92,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/pizzasizes/{id}/edit', [PizzaSizeController::class, 'edit'])->name('pizzasizes.edit');
     Route::put('/pizzasizes/{id}', [PizzaSizeController::class, 'update'])->name('pizzasizes.update');
     Route::delete('/pizzasizes/{id}', [PizzaSizeController::class, 'destroy'])->name('pizzasizes.destroy');
+});
+
+//RUTAS DE CLIENTES
+Route::middleware('auth')->group(function(){
+    Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
+
 });
 require __DIR__.'/auth.php';

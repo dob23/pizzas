@@ -13,4 +13,9 @@ class Cliente extends Model
         'phone',
     ];
     public $timestamps = true;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

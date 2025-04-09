@@ -22,6 +22,9 @@
         'empleados.index',
         'empleados.new',
         'empleados.edit',
+        'clientes.index',
+        'clientes.new',
+        'clientes.edit',
         
     ];
     $isSmallLogo = request()->routeIs(...$smallLogoRoutes);
