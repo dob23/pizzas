@@ -11,7 +11,7 @@ use App\Http\Controllers\PizzaSizeController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\SucursalController;
-
+use App\Http\Controllers\OrdenController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -113,5 +113,13 @@ Route::middleware('auth')->group(function(){
     Route::get('/sucursales/{id}/edit', [SucursalController::class, 'edit'])->name('sucursales.edit');
     Route::put('/sucursales/{id}', [SucursalController::class, 'update'])->name('sucursales.update');
     Route::delete('/sucursales/{id}', [SucursalController::class, 'destroy'])->name('sucursales.destroy');
+});
+
+//RUTAS DE ORDENES
+Route::middleware('auth')->group(function(){
+    Route::get('/ordenes', [OrdenController::class, 'index'])->name('ordenes.index');
+    Route::get('/ordenes/new', [OrdenController::class, 'create'])->name('ordenes.new');
+    Route::post('/ordenes', [OrdenController::class, 'store'])->name('ordenes.store');
+
 });
 require __DIR__.'/auth.php';
