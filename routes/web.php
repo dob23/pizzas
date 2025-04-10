@@ -10,6 +10,7 @@ use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\PizzaSizeController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\SucursalController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -102,6 +103,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/clientes/{id}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
     Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('clientes.update');
     Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
+});
 
+//RUTAS DE SUCURSALES
+Route::middleware('auth')->group(function(){
+    Route::get('/sucursales', [SucursalController::class, 'index'])->name('sucursales.index');
 });
 require __DIR__.'/auth.php';

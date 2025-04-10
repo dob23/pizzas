@@ -12,9 +12,8 @@ class SucursalController extends Controller
     public function index()
     {
         $sucursales = Sucursal::all();
-        return view('sucursales.index', [
-            'sucursales' => $sucursales,
-        ]);
+        
+        return view('sucursales.index', ['sucursales' => $sucursales,]);
     }
 
     /**
