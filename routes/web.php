@@ -120,6 +120,5 @@ Route::middleware('auth')->group(function(){
     Route::get('/ordenes', [OrdenController::class, 'index'])->name('ordenes.index');
     Route::get('/ordenes/new', [OrdenController::class, 'create'])->name('ordenes.new');
     Route::post('/ordenes', [OrdenController::class, 'store'])->name('ordenes.store');
-
 });
 require __DIR__.'/auth.php';

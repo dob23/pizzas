@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Orden;
-  
+use App\Models\Cliente;
+use App\Models\Sucursal;
+use App\Models\Empleado;
 class OrdenController extends Controller
 {
     /**
@@ -21,7 +23,11 @@ class OrdenController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = Cliente::with('user')->get();
+        $sucursales = Sucursal::all();
+        $repartidores = Empleado::all();
+    
+        return view('ordenes.new', compact('clientes', 'sucursales', 'repartidores'));
     }
 
     /**
@@ -29,7 +35,16 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orden = new Orden();
+        $orden->client_id = $request->input('client_id');
+        $orden->branch_id = $request->input('branch_id');
+        $orden->total_price = $request->input('total_price');
+        $orden->status = $request->input('status');
+        $orden->delivery_type = $request->input('delivery_type');
+        $orden->delivery_person_id = $request->input('delivery_person_id');
+        $orden->save();
+    
+        return redirect()->route('ordenes.index');
     }
 
     /**

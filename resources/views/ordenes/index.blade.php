@@ -26,7 +26,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
-              <a href="{{ route('ordenes.index') }}" 
+              <a href="{{ route('ordenes.new') }}" 
                 class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded ml-1">
                 <i class="fa-solid fa-plus"></i> Nueva Orden
               </a>
