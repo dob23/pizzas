@@ -92,6 +92,9 @@ class OrdenController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $orden = Orden::findOrFail($id);
+        $orden->delete();
+    
+        return redirect()->route('ordenes.index');
     }
 }

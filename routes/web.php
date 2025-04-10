@@ -120,5 +120,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/ordenes', [OrdenController::class, 'index'])->name('ordenes.index');
     Route::get('/ordenes/new', [OrdenController::class, 'create'])->name('ordenes.new');
     Route::post('/ordenes', [OrdenController::class, 'store'])->name('ordenes.store');
+    Route::get('/ordenes/{id}/edit', [OrdenController::class, 'edit'])->name('ordenes.edit');
+    Route::put('/ordenes/{id}', [OrdenController::class, 'update'])->name('ordenes.update');
+    Route::delete('/ordenes/{id}', [OrdenController::class, 'destroy'])->name('ordenes.destroy');
 });
 require __DIR__.'/auth.php';

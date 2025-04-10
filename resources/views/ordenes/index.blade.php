@@ -54,7 +54,12 @@
                     <td>{{ $orden->delivery_type }}</td>
                     <td>{{ $orden->repartidor->name ?? 'No asignado' }}</td>
                     <td>
-                        <span>Acciones</span>
+                      <a href="{{ route('ordenes.edit', ['id' => $orden->id]) }}" class="btn btn-warning">Editar</a>
+                        <form action="{{ route('ordenes.destroy', ['id' => $orden->id]) }}" method="POST" style="display:inline;" class="delete-form">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">Eliminar</button>
+                      </form>
                     </td>
                   </tr>
                   @endforeach
