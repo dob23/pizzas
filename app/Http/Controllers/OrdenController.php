@@ -60,7 +60,12 @@ class OrdenController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $orden = Orden::findOrFail($id);
+        $clientes = Cliente::with('user')->get();
+        $sucursales = Sucursal::all();
+        $repartidores = Empleado::all();
+    
+        return view('ordenes.edit', compact('orden', 'clientes', 'sucursales', 'repartidores'));
     }
 
     /**
@@ -68,7 +73,18 @@ class OrdenController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $orden = Orden::findOrFail($id);
+
+        $orden->update([
+            'client_id' => $request->client_id,
+            'branch_id' => $request->branch_id,
+            'total_price' => $request->total_price,
+            'status' => $request->status,
+            'delivery_type' => $request->delivery_type,
+            'delivery_person_id' => $request->delivery_person_id,
+        ]);
+    
+        return redirect()->route('ordenes.index');
     }
 
     /**
