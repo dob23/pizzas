@@ -110,6 +110,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/sucursales', [SucursalController::class, 'index'])->name('sucursales.index');
     Route::get('/sucursales/new', [SucursalController::class, 'create'])->name('sucursales.new');
     Route::post('/sucursales', [SucursalController::class, 'store'])->name('sucursales.store');
-    
+    Route::get('/sucursales/{id}/edit', [SucursalController::class, 'edit'])->name('sucursales.edit');
+    Route::put('/sucursales/{id}', [SucursalController::class, 'update'])->name('sucursales.update');
+        
+
 });
 require __DIR__.'/auth.php';
