@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sucursal;
+use Illuminate\Support\Facades\DB;
 class SucursalController extends Controller
 {
     /**
@@ -12,7 +13,7 @@ class SucursalController extends Controller
     public function index()
     {
         $sucursales = Sucursal::all();
-        
+
         return view('sucursales.index', ['sucursales' => $sucursales,]);
     }
 
@@ -21,7 +22,11 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        //
+        $sucursales = DB::table('branches')
+        ->select('id', 'name', 'address')
+        ->get();
+
+        return view('sucursales.new', ['sucursales' => $sucursales]);
     }
 
     /**
@@ -29,7 +34,15 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sucursal = new Sucursal();
+        $sucursal->name = $request->input('name');
+        $sucursal->address = $request->input('address');
+        $sucursal->phone = $request->input('phone');
+        $sucursal->email = $request->input('email');
+        $sucursal->manager_id = $request->input('manager_id');
+        $sucursal->save();
+
+        return redirect()->route('sucursales.index');
     }
 
     /**
