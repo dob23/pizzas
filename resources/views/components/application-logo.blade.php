@@ -28,6 +28,11 @@
         'sucursales.index',
         'sucursales.new',
         'sucursales.edit',
+        'ingredientes.index',
+        'ingredientes.new',
+        'ingredientes.edit',
+
+        
     ];
     $isSmallLogo = request()->routeIs(...$smallLogoRoutes);
 @endphp

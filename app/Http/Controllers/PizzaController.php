@@ -14,8 +14,8 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        $pizzas = Pizza::all();
-        return view('pizzas.index', ['pizzas' => $pizzas]);
+        $pizzas = Pizza::all(); // <- debe retornar colección de modelos, no booleans
+      return view('pizzas.index', compact('pizzas'));
     }
 
     /**

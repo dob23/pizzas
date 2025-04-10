@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\MateriaPrimaController;
 use App\Http\Controllers\CompraController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\PizzaSizeController;
@@ -63,7 +62,6 @@ Route::middleware('auth')->group(function(){
     Route::get('/compras/{id}/edit', [CompraController::class, 'edit'])->name('compras.edit');
     Route::put('/compras/{id}', [CompraController::class, 'update'])->name('compras.update');
     Route::delete('/compras/{id}', [CompraController::class, 'destroy'])->name('compras.destroy');
-
 });
 
 

@@ -14,19 +14,15 @@
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
                     {{ __('Dashboard') }}
                 </x-nav-link>
-                <!-- PROVEEDORES -->
                 <x-nav-link :href="route('proveedores.index')" :active="request()->routeIs('proveedores.index')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
                     {{ __('Proveedores') }}
                 </x-nav-link>
-                <!-- MATERIA PRIMA -->
                 <x-nav-link :href="route('materiaPrima.index')" :active="request()->routeIs('materiaPrima.index')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
                     {{ __('Materia Prima') }}
                 </x-nav-link>
-                <!-- COMPRAS -->
                 <x-nav-link :href="route('compras.index')" :active="request()->routeIs('compras.index')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
                     {{ __('Compras') }}
                 </x-nav-link>
-                <!-- PIZZAS -->
                 <x-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
                     {{ __('Pizzas') }}
                 </x-nav-link>
@@ -41,6 +37,8 @@
                 <!-- EMPLEADOS -->
                 <x-nav-link :href="route('empleados.index')" :active="request()->routeIs('empleados.index')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
                     {{ __('Empleados') }}
+                <x-nav-link :href="route('ingredientes.index')" :active="request()->routeIs('ingredientes.index')" class="text-white inline-flex items-center px-3 py-2 border border-transparent hover:border-green-700 text-sm leading-4 font-medium rounded-md bg-green-600 hover:bg-green-700 focus:outline-none transition ease-in-out duration-150">
+                    {{ __('Ingredientes') }}
                 </x-nav-link>
             </div>
 
@@ -67,10 +65,8 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')" class="text-green-600 hover:bg-green-100"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                onclick="event.preventDefault(); this.closest('form').submit();">
                                 {{ __('Cerrar Sesion') }}
                             </x-dropdown-link>
                         </form>
@@ -96,6 +92,21 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('proveedores.index')" :active="request()->routeIs('proveedores.index')" class="text-white">
+                {{ __('Proveedores') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('materiaPrima.index')" :active="request()->routeIs('materiaPrima.index')" class="text-white">
+                {{ __('Materia Prima') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('compras.index')" :active="request()->routeIs('compras.index')" class="text-white">
+                {{ __('Compras') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index')" class="text-white">
+                {{ __('Pizzas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ingredientes.index')" :active="request()->routeIs('ingredientes.index')" class="text-white">
+                {{ __('Ingredientes') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -113,10 +124,8 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')" class="text-white"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                        onclick="event.preventDefault(); this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
