@@ -49,7 +49,12 @@
                     <td>{{ $cliente->address ?? 'No especificada' }}</td>
                     <td>{{ $cliente->phone ?? 'No especificado' }}</td>
                     <td>
-                      <span>Acciones</span>
+                      <a href="{{ route('clientes.edit', ['id' => $cliente->id]) }}" class="btn btn-warning">Editar</a>
+                      <form action="{{ route('clientes.destroy', ['id' => $cliente->id]) }}" method="POST" style="display:inline;" class="delete-form">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
                     </td>
                   </tr>
                   @endforeach
