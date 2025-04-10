@@ -25,7 +25,9 @@
         'clientes.index',
         'clientes.new',
         'clientes.edit',
-        
+        'sucursales.index',
+        'sucursales.new',
+        'sucursales.edit',
     ];
     $isSmallLogo = request()->routeIs(...$smallLogoRoutes);
 @endphp
