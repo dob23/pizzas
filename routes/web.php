@@ -113,6 +113,5 @@ Route::middleware('auth')->group(function(){
     Route::get('/sucursales/{id}/edit', [SucursalController::class, 'edit'])->name('sucursales.edit');
     Route::put('/sucursales/{id}', [SucursalController::class, 'update'])->name('sucursales.update');
     Route::delete('/sucursales/{id}', [SucursalController::class, 'destroy'])->name('sucursales.destroy');
-
 });
 require __DIR__.'/auth.php';
