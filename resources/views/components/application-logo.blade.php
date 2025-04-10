@@ -19,7 +19,15 @@
         'pizzasizes.index',
         'pizzasizes.new',
         'pizzasizes.edit',
-        
+        'empleados.index',
+        'empleados.new',
+        'empleados.edit',
+        'clientes.index',
+        'clientes.new',
+        'clientes.edit',
+        'sucursales.index',
+        'sucursales.new',
+        'sucursales.edit',
     ];
     $isSmallLogo = request()->routeIs(...$smallLogoRoutes);
 @endphp
