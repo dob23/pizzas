@@ -108,5 +108,8 @@ Route::middleware('auth')->group(function(){
 //RUTAS DE SUCURSALES
 Route::middleware('auth')->group(function(){
     Route::get('/sucursales', [SucursalController::class, 'index'])->name('sucursales.index');
+    Route::get('/sucursales/new', [SucursalController::class, 'create'])->name('sucursales.new');
+    Route::post('/sucursales', [SucursalController::class, 'store'])->name('sucursales.store');
+    
 });
 require __DIR__.'/auth.php';

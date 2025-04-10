@@ -58,7 +58,8 @@ class SucursalController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $sucursal = Sucursal::findOrFail($id);
+        return view('sucursales.edit', ['sucursal' => $sucursal]);
     }
 
     /**
@@ -66,7 +67,15 @@ class SucursalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $sucursal = Sucursal::find($id);
+        $sucursal->name = $request->input('name');
+        $sucursal->address = $request->input('address');
+        $sucursal->phone = $request->input('phone');
+        $sucursal->email = $request->input('email');
+        $sucursal->manager_id = $request->input('manager_id');
+        $sucursal->save();
+    
+        return redirect()->route('sucursales.index');
     }
 
     /**
