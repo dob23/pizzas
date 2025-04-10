@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('pizza_ingredients', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pizza_id')->constrained('pizzas')->onDelete('cascade');
+            $table->foreignId('ingredient_id')->constrained('ingredients')->onDelete('cascade');
             $table->timestamps();
         });
     }

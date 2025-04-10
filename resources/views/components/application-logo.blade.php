@@ -19,6 +19,10 @@
         'pizzasizes.index',
         'pizzasizes.new',
         'pizzasizes.edit',
+        'ingredientes.index',
+        'ingredientes.new',
+        'ingredientes.edit',
+
         
     ];
     $isSmallLogo = request()->routeIs(...$smallLogoRoutes);

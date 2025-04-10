@@ -9,7 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\PizzaSizeController;
-
+use App\Http\Controllers\IngredientController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -85,4 +85,15 @@ Route::middleware('auth')->group(function(){
     Route::put('/pizzasizes/{id}', [PizzaSizeController::class, 'update'])->name('pizzasizes.update');
     Route::delete('/pizzasizes/{id}', [PizzaSizeController::class, 'destroy'])->name('pizzasizes.destroy');
 });
+
+// RUTAS DE INGREDIENTES
+Route::middleware('auth')->group(function(){
+    Route::get('/ingredientes', [App\Http\Controllers\IngredientController::class, 'index'])->name('ingredientes.index');
+    Route::get('/ingredientes/new', [App\Http\Controllers\IngredientController::class, 'create'])->name('ingredientes.new');
+    Route::post('/ingredientes', [App\Http\Controllers\IngredientController::class, 'store'])->name('ingredientes.store');
+    Route::get('/ingredientes/{id}/edit', [App\Http\Controllers\IngredientController::class, 'edit'])->name('ingredientes.edit');
+    Route::put('/ingredientes/{id}', [App\Http\Controllers\IngredientController::class, 'update'])->name('ingredientes.update');
+    Route::delete('/ingredientes/{id}', [App\Http\Controllers\IngredientController::class, 'destroy'])->name('ingredientes.destroy');
+});
+
 require __DIR__.'/auth.php';
