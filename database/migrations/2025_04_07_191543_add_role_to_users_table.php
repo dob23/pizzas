@@ -12,15 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('role', ['cliente', 'cajero', 'administrador', 'cocinero', 'mensajero'])
-            ->default('cliente')
-            ->after('email');
+            $table->enum('role', [
+                'super_admin',
+                'administrador',
+                'gerente_sucursal',
+                'almacenista',
+                'cajero',
+                'cocinero',
+                'mensajero',
+                'soporte',
+                'cliente',
+            ])->after('password');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
